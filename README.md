@@ -22,7 +22,7 @@
          
 ### Questions
 
-- [ ] Receive (CategoryID, qIndex)
+- [x] Receive (CategoryID, qIndex)
 - [ ] Fetch Question API
 - [ ] Display incorrect_answers
 - [ ] Check the user answer
