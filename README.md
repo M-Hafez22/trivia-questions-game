@@ -30,7 +30,8 @@
 - [ ] timeout
     - [x] set time out
     - [x] Skip when time out
-    - [ ] Update the score
+    - [x] Update the score
+    - [ ] set the timeout depending on the difficulty level
 - [x] Calculate
     - [x] Asked Questions
     - [x] Correct
