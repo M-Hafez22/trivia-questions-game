@@ -8,7 +8,7 @@ function Question() {
   const fetchQuestions = async () =>
     await (
       await fetch(
-        `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=easy`
+        `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=easy&type=multiple`
       )
     ).json();
 
