@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { ScoreContext } from "../contexts/scoreContext";
 function Question() {
   let { category, index } = useParams();
+  index = parseInt(index) 
   const [score, setScore] = useContext(ScoreContext);
 
   const fetchQuestions = async () =>
@@ -27,15 +29,23 @@ function Question() {
 
   const handleClick = (e) => {
     if (e.target.innerText === question?.correct_answer) {
-      console.log("Text " + e.target.innerText)
-      const newScore = { ...score,  questions: score.questions + 1, correct: score.correct + 1};
-      console.dir(newScore)
+      console.log("Text " + e.target.innerText);
+      const newScore = {
+        ...score,
+        questions: score.questions + 1,
+        correct: score.correct + 1,
+      };
+      console.dir(newScore);
       setScore(newScore);
     }
-    console.log('correct: ' + score.correct);
+    console.log("correct: " + score.correct);
   };
   const handleSkip = () => {
-    const newScore = { ...score, questions: score.questions + 1, skiped: score.skiped + 1 };
+    const newScore = {
+      ...score,
+      questions: score.questions + 1,
+      skiped: score.skiped + 1,
+    };
     setScore(newScore);
     console.log(score);
   };
@@ -43,18 +53,24 @@ function Question() {
     <div>
       <h1>Question</h1>
       <p>{question?.question} </p>
-      <ul>{answers && answers?.map((a, i) => <button key={i} onClick={handleClick}>{a}</button>)}</ul>
+      <ul>
+        {answers &&
+          answers?.map((a, i) => (
+            <button key={i} onClick={handleClick}>
+              {a}
+            </button>
+          ))}
+      </ul>
       <p>{question?.correct_answer}</p>
       <div className="btns">
         <button>next</button>
-        <button onClick={handleSkip}>Skiped: {score.skiped}</button>
+        <button onClick={handleSkip}>
+        {index > 8 ? <Link to="/categroties">Back to Category</Link> : <Link to={`/question/${category}/${index + 1}`}>Skiped</Link> }
+        </button>
       </div>
       <div>
-        <h1>Score</h1>
-        <p>questions: {score.questions}</p>
-        <p>correct: {score.correct}</p>
-        <p>failed: {score.failed}</p>
-        <p>skiped: {score.skiped}</p>
+        <p>length: {data?.results?.length}</p>
+        <p>index: {index}</p>
       </div>
     </div>
   );
