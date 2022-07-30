@@ -11,7 +11,7 @@ function Question() {
   const [{ chosenDifficulty }, setChosenDifficulty] = useContext(
     ChosenDifficultyContext
   );
-
+  // Answer Period depending on the difficulty level
   const answerPeriod =
     chosenDifficulty === "easy"
       ? 90000
@@ -21,9 +21,9 @@ function Question() {
 
   const [userAnswer, setUserAnswer] = useState("");
   const navigate = useNavigate();
+  // Timeout
   const start = Date.now();
   console.log("starting timer...");
-
   useEffect(() => {
     setTimeout(() => {
       const millis = Date.now() - start;
@@ -35,15 +35,19 @@ function Question() {
     }, answerPeriod);
   });
 
-
-  const { isLoading, error, data, status } = useQuery(["data"],  () =>
-  fetch( `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=easy&type=multiple`).then((res) => res.json()));
+  // Fetch Question from API
+  const { isLoading, error, data, status } = useQuery(["data"], () =>
+    fetch(
+      `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=easy&type=multiple`
+    ).then((res) => res.json())
+  );
   // handle Loading
   if (isLoading) return "Loading...";
   // handle Error
   if (error) return "An error has occurred: " + error.message;
   // Get data
   const question = data?.results?.[index];
+  // Shuffle the answers
   const answers =
     question &&
     [...question?.incorrect_answers, question?.correct_answer]?.sort(
@@ -77,11 +81,10 @@ function Question() {
     setScore(newScore);
   };
 
-
   return (
     <div>
-      <h1>Question Start: </h1>
-      <p>{decodeURI(question?.question)} </p>
+      <h1>Question</h1>
+      <p>{question?.question}</p>
       <ul>
         {answers
           ? answers?.map((a, i) => (
