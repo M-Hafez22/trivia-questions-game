@@ -47,11 +47,11 @@ function Categroties() {
         Now Choose the Question Categroties:{value} - ID:{id}
       </p>
       <ul>
-        {viewCategory?.map((category, i) => (
+        {viewCategory ?   viewCategory?.map((category, i) => (
           <li key={i}>
             <button onClick={handleClick}>{category}</button>
           </li>
-        ))}
+        )) : "Loading"}
       </ul>
       <button onClick={handleSubmit}>
         {viewCategory ? (

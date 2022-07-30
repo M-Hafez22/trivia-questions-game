@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ScoreContext } from "../contexts/scoreContext";
 function Question() {
   let { category, index } = useParams();
-  index = parseInt(index) 
+  index = parseInt(index);
   const [score, setScore] = useContext(ScoreContext);
 
   const fetchQuestions = async () =>
@@ -22,10 +22,11 @@ function Question() {
   if (error) return "An error has occurred: " + error.message;
   // Get data
   const question = data?.results?.[index];
-  const answers = question && [
-    ...question?.incorrect_answers,
-    question?.correct_answer,
-  ]?.sort((a, b) => 0.5 - Math.random());
+  const answers =
+    question &&
+    [...question?.incorrect_answers, question?.correct_answer]?.sort(
+      (a, b) => 0.5 - Math.random()
+    );
 
   const handleClick = (e) => {
     if (e.target.innerText === question?.correct_answer) {
@@ -54,18 +55,23 @@ function Question() {
       <h1>Question</h1>
       <p>{question?.question} </p>
       <ul>
-        {answers &&
-          answers?.map((a, i) => (
-            <button key={i} onClick={handleClick}>
-              {a}
-            </button>
-          ))}
+        {answers
+          ? answers?.map((a, i) => (
+              <button key={i} onClick={handleClick}>
+                {a}
+              </button>
+            ))
+          : "Loading..."}
       </ul>
       <p>{question?.correct_answer}</p>
       <div className="btns">
         <button>next</button>
         <button onClick={handleSkip}>
-        {index > 8 ? <Link to="/categroties">Back to Category</Link> : <Link to={`/question/${category}/${index + 1}`}>Skiped</Link> }
+          {index > 8 ? (
+            <Link to="/categroties">Back to Category</Link>
+          ) : (
+            <Link to={`/question/${category}/${index + 1}`}>Skiped</Link>
+          )}
         </button>
       </div>
       <div>
