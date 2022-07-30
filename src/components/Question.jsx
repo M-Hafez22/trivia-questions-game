@@ -24,14 +24,20 @@ function Question() {
   const start = Date.now();
   console.log("starting timer...");
 
-  const fetchQuestions = async () =>
-    await (
-      await fetch(
-        `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=easy&type=multiple`
-      )
-    ).json();
+  useEffect(() => {
+    setTimeout(() => {
+      const millis = Date.now() - start;
+      console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
+      handleSkip();
+      index > 8
+        ? navigate("/categroties")
+        : navigate(`/question/${category}/${index + 1}`);
+    }, answerPeriod);
+  });
 
-  const { isLoading, error, data, status } = useQuery(["data"], fetchQuestions);
+
+  const { isLoading, error, data, status } = useQuery(["data"],  () =>
+  fetch( `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=easy&type=multiple`).then((res) => res.json()));
   // handle Loading
   if (isLoading) return "Loading...";
   // handle Error
