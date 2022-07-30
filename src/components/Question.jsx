@@ -3,10 +3,22 @@ import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { ScoreContext } from "../contexts/scoreContext";
+import { ChosenDifficultyContext } from "../contexts/difficulty";
 function Question() {
   let { category, index } = useParams();
   index = parseInt(index);
   const [score, setScore] = useContext(ScoreContext);
+  const [{ chosenDifficulty }, setChosenDifficulty] = useContext(
+    ChosenDifficultyContext
+  );
+
+  const answerPeriod =
+    chosenDifficulty === "easy"
+      ? 90000
+      : chosenDifficulty === "medium"
+      ? 60000
+      : chosenDifficulty === "hard" && 30000;
+
   const [userAnswer, setUserAnswer] = useState("");
   const navigate = useNavigate();
   const start = Date.now();
@@ -63,11 +75,11 @@ function Question() {
     setTimeout(() => {
       const millis = Date.now() - start;
       console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
-      handleSkip()
+      handleSkip();
       index > 8
         ? navigate("/categroties")
         : navigate(`/question/${category}/${index + 1}`);
-    }, 2000);
+    }, answerPeriod);
   });
 
   return (
