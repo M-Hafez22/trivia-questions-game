@@ -11,7 +11,7 @@ export const ScoreProvider = ({ children }) => {
   });
 
   return(
-    <ScoreContext.Provider value={[ {score }, setScore]}>
+    <ScoreContext.Provider value={[ score, setScore]}>
     {children}
   </ScoreContext.Provider>
   )

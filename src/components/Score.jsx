@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ScoreContext } from "../contexts/scoreContext";
 
 function Score() {
-  const [{ score }, setScore] = useContext(ScoreContext);
+  const [score, setScore] = useContext(ScoreContext);
 
   return (
     <div>
