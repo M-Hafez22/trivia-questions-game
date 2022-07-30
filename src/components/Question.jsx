@@ -37,10 +37,17 @@ function Question() {
         questions: score.questions + 1,
         correct: score.correct + 1,
       };
-      console.dir(newScore);
       setScore(newScore);
+      console.log("correct: " + score.correct);
+    }else{
+      const newScore = {
+        ...score,
+        questions: score.questions + 1,
+        failed: score.failed + 1,
+      };
+      setScore(newScore);
+      console.log("failed: " + score.failed);
     }
-    console.log("correct: " + score.correct);
   };
   const handleSkip = () => {
     const newScore = {
