@@ -24,8 +24,8 @@ function Categroties() {
   // const categoriesIds = categories.map((category) => category.id);
 
   const handleClick = (e) => {
-    setValue(e.target.innerHTML);
-    setId(categories?.[categoriesNames?.indexOf(e.target.innerHTML)]?.id);
+    setValue(e.target.innerText);
+    setId(categories?.[categoriesNames?.indexOf(e.target.innerText)]?.id);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
