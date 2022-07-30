@@ -10,8 +10,8 @@
 
 ### Categories
 
-- [ ] Fetch the Categories API
-- [ ] Display the Categories
+- [x] Fetch the Categories API
+- [x] Display the Categories
 - [ ] Get the selectedCategories from User
 - [ ] Save selectedCategories into an Array
 - [ ] Link to

@@ -12,10 +12,15 @@ function Categroties() {
   if (error) return "An error has occurred: " + error.message;
   // Get data
   const categories = data.trivia_categories;
-  console.dir(categories)
+  const categoriesNames =  categories.map((category) => (category.name));
+  const categoriesIds =  categories.map((category) => (category.id));
+  console.log(categoriesNames)
+  console.log(categoriesIds)
+
   return (
     <div>
       <h1>Categroties</h1>
+      <ul>{categoriesNames?.map((category, i) => <li key={i}><button>{category}</button></li>)}</ul>
     </div>
   );
 }
