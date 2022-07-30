@@ -24,7 +24,7 @@
 
 - [x] Receive (CategoryID, qIndex)
 - [x] Fetch Question API
-- [ ] Display incorrect_answers
+- [x] Display incorrect_answers
 - [ ] Check the user answer
 
 - [ ] Calculate

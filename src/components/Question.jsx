@@ -24,7 +24,8 @@ function Question() {
   return (
     <div>
       <h1>Question</h1>
-      <p>question: {question.question} </p>
+      <p>{question.question} </p>
+      <ul>{question?.incorrect_answers?.map((a, i) => <button key={i}>{a}</button>)}</ul>
     </div>
   );
 }
