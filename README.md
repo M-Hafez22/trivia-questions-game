@@ -26,18 +26,21 @@
 - [x] Receive (CategoryID, qIndex)
 - [x] Fetch Question API
 - [x] Display incorrect_answers
-- [ ] Check the user answer
-
-- [ ] Calculate
-    - [ ] Asked Questions
-    - [ ] Correct
-    - [ ] fail
-    - [ ] skip 
-- [ ] Link to
+- [x] Check the user answer
+- [ ] timeout
+    - [x] set time out
+    - [x] Skip when time out
+    - [ ] Update the score
+- [x] Calculate
+    - [x] Asked Questions
+    - [x] Correct
+    - [x] fail
+    - [x] skip 
+- [x] Link to
     - if nextQuestion
-        - [ ] next question
+        - [x] next question
     - else
-        - [ ] Back to Categories
+        - [x] Back to Categories
 ### Score
 
 - Display

@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { ScoreContext } from "../contexts/scoreContext";
@@ -8,6 +8,9 @@ function Question() {
   index = parseInt(index);
   const [score, setScore] = useContext(ScoreContext);
   const [userAnswer, setUserAnswer] = useState("");
+  const navigate = useNavigate();
+  const start = Date.now();
+  console.log("starting timer...");
 
   const fetchQuestions = async () =>
     await (
@@ -38,15 +41,13 @@ function Question() {
         correct: score.correct + 1,
       };
       setScore(newScore);
-      console.log("correct: " + score.correct);
-    }else{
+    } else {
       const newScore = {
         ...score,
         questions: score.questions + 1,
         failed: score.failed + 1,
       };
       setScore(newScore);
-      console.log("failed: " + score.failed);
     }
   };
   const handleSkip = () => {
@@ -56,11 +57,22 @@ function Question() {
       skiped: score.skiped + 1,
     };
     setScore(newScore);
-    console.log(score);
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      const millis = Date.now() - start;
+      console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
+
+      index > 8
+        ? navigate("/categroties")
+        : navigate(`/question/${category}/${index + 1}`);
+    }, 2000);
+  });
+
   return (
     <div>
-      <h1>Question</h1>
+      <h1>Question Start: </h1>
       <p>{question?.question} </p>
       <ul>
         {answers
@@ -96,6 +108,7 @@ function Question() {
       <div>
         <p>length: {data?.results?.length}</p>
         <p>index: {index}</p>
+        <button onClick={() => navigate("/")}>Home</button>
       </div>
     </div>
   );
