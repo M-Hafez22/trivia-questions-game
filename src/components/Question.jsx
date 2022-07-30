@@ -77,21 +77,11 @@ function Question() {
     setScore(newScore);
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      const millis = Date.now() - start;
-      console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
-      handleSkip();
-      index > 8
-        ? navigate("/categroties")
-        : navigate(`/question/${category}/${index + 1}`);
-    }, answerPeriod);
-  });
 
   return (
     <div>
       <h1>Question Start: </h1>
-      <p>{question?.question} </p>
+      <p>{decodeURI(question?.question)} </p>
       <ul>
         {answers
           ? answers?.map((a, i) => (
