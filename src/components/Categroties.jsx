@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { SelectedCategoriesContext } from "../contexts/selectedCategories";
@@ -10,10 +10,18 @@ function Categroties() {
   const [{ selectedCategories }, setSelectedCategories] = useContext(
     SelectedCategoriesContext
   );
+
   // Display categorties
   const { isLoading, error, data } = useQuery(["data"], () =>
     fetch("https://opentdb.com/api_category.php").then((res) => res.json())
   );
+
+  // choose random category ID
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * data?.trivia_categories?.length + 1);
+    setSelectedCategories([...selectedCategories, data?.trivia_categories?.[randomIndex]?.name])
+    setId(data?.trivia_categories?.[randomIndex]?.id)
+  },[data])
   // handle Loading
   if (isLoading) return "Loading...";
   // handle Error
@@ -31,14 +39,7 @@ function Categroties() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    setId(categories?.[categoriesNames?.indexOf(value)]?.id);
-    const randomIndex = Math.floor(Math.random() * categoriesNames.length + 1);
-    value === ""
-      ? setSelectedCategories([
-          ...selectedCategories,
-          categoriesNames[randomIndex],
-        ])
-      : setSelectedCategories([...selectedCategories, value]);
+   setSelectedCategories([...selectedCategories, value]);
   };
   return (
     <div>
