@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-
+import { ScoreContext } from "../contexts/scoreContext";
 function Question() {
   let { category, index } = useParams();
+  const [{ score }, setScore] = useContext(ScoreContext);
 
   const fetchQuestions = async () =>
     await (
@@ -25,7 +26,15 @@ function Question() {
     <div>
       <h1>Question</h1>
       <p>{question?.question} </p>
-      <ul>{question?.incorrect_answers?.map((a, i) => <button key={i}>{a}</button>)}</ul>
+      <ul>
+        {question?.incorrect_answers?.map((a, i) => (
+          <button key={i}>{a}</button>
+        ))}
+      </ul>
+      <p>questions: {score.questions}</p>
+      <p>correct: {score.correct}</p>
+      <p>failed: {score.failed}</p>
+      <p>skiped: {score.skiped}</p>
     </div>
   );
 }
