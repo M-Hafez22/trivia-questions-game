@@ -20,17 +20,25 @@ function Question() {
   if (error) return "An error has occurred: " + error.message;
   // Get data
   const question = data?.results?.[index];
-  console.log(question);
+  const answers = [...question?.incorrect_answers, question?.correct_answer]?.sort((a, b) => 0.5 - Math.random())
+
+  const handleClick = (e) => {
+    e.target.innerHTML === question?.correct_answer && score.correct++
+    console.log(score.correct)
+  }
 
   return (
     <div>
       <h1>Question</h1>
       <p>{question?.question} </p>
       <ul>
-        {question?.incorrect_answers?.map((a, i) => (
-          <button key={i}>{a}</button>
+        {answers && answers?.map((a, i) => (
+          <button key={i} onClick={handleClick}>
+            {a}
+          </button>
         ))}
       </ul>
+      <p>{question?.correct_answer}</p>
       <p>questions: {score.questions}</p>
       <p>correct: {score.correct}</p>
       <p>failed: {score.failed}</p>
