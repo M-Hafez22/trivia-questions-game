@@ -22,7 +22,7 @@ function Question() {
   if (error) return "An error has occurred: " + error.message;
   // Get data
   const question = data?.results?.[index];
-  const answers = [
+  const answers = question && [
     ...question?.incorrect_answers,
     question?.correct_answer,
   ]?.sort((a, b) => 0.5 - Math.random());
