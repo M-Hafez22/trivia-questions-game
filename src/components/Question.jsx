@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -7,6 +7,7 @@ function Question() {
   let { category, index } = useParams();
   index = parseInt(index);
   const [score, setScore] = useContext(ScoreContext);
+  const [userAnswer, setUserAnswer] = useState("");
 
   const fetchQuestions = async () =>
     await (
@@ -28,9 +29,9 @@ function Question() {
       (a, b) => 0.5 - Math.random()
     );
 
-  const handleClick = (e) => {
-    if (e.target.innerText === question?.correct_answer) {
-      console.log("Text " + e.target.innerText);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (userAnswer === question?.correct_answer) {
       const newScore = {
         ...score,
         questions: score.questions + 1,
@@ -57,15 +58,26 @@ function Question() {
       <ul>
         {answers
           ? answers?.map((a, i) => (
-              <button key={i} onClick={handleClick}>
+              <button
+                key={i}
+                onClick={(e) => setUserAnswer(e.target.innerText)}
+              >
                 {a}
               </button>
             ))
           : "Loading..."}
       </ul>
-      <p>{question?.correct_answer}</p>
+      <p>
+        {question?.correct_answer} : {userAnswer}
+      </p>
       <div className="btns">
-        <button>next</button>
+        <button onClick={handleSubmit}>
+          {index > 8 ? (
+            <Link to="/categroties">Back to Category</Link>
+          ) : (
+            <Link to={`/question/${category}/${index + 1}`}>Next</Link>
+          )}
+        </button>
         <button onClick={handleSkip}>
           {index > 8 ? (
             <Link to="/categroties">Back to Category</Link>
