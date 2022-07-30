@@ -12,7 +12,7 @@
 
 - [x] Fetch the Categories API
 - [x] Display the Categories
-- [ ] Get the selectedCategories from User
+- [x] Get the selectedCategories from User
 - [ ] Save selectedCategories into an Array
 - [ ] Link to
     - If RemainCategories:

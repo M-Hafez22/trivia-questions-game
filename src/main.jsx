@@ -4,6 +4,8 @@ import App from "./App";
 // Contexts
 import { UserNameProvider } from "./contexts/userName";
 import { ChosenDifficultyProvider } from "./contexts/difficulty";
+import { SelectedCategoriesProvider } from "./contexts/selectedCategories";
+// React Query
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // import './index.css'
@@ -13,10 +15,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserNameProvider>
       <ChosenDifficultyProvider>
-        <QueryClientProvider client={queryClient}>
-          <App />
-          <ReactQueryDevtools />
-        </QueryClientProvider>
+        <SelectedCategoriesProvider>
+          <QueryClientProvider client={queryClient}>
+            <App />
+            <ReactQueryDevtools />
+          </QueryClientProvider>
+        </SelectedCategoriesProvider>
       </ChosenDifficultyProvider>
     </UserNameProvider>
   </React.StrictMode>
