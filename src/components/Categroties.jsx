@@ -54,9 +54,13 @@ function Categroties() {
         ))}
       </ul>
       <button onClick={handleSubmit}>
-        <Link to={`/question/${id}/0`}>
-          Choose {value === "" ? "Random" : value}
-        </Link>
+        {viewCategory ? (
+          <Link to={`/question/${id}/0`}>
+            Choose {value === "" ? "Random" : value}
+          </Link>
+        ) : (
+          <Link to={`/score`}>Score</Link>
+        )}
       </button>
     </div>
   );

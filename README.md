@@ -19,7 +19,7 @@
     - If RemainCategories:
         - [x] Question with (CategoryID, qIndex)
     - else
-        - [ ] Score
+        - [x] Score
          
 ### Questions
 
