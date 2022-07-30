@@ -52,7 +52,7 @@ function Categroties() {
         ))}
       </ul>
       <button onClick={handleSubmit}>
-        <Link to={`/question/${id}`}>
+        <Link to={`/question/${id}/0`}>
           Choose {value === "" ? "Random" : value}
         </Link>
       </button>

@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/categroties" element={<Categroties />} />
-          <Route path="/question/:id" element={<Question />} />
+          <Route path="/question/:category/:index" element={<Question />} />
           <Route path="/score" element={<Score />} />
         </Routes>
       </Router>

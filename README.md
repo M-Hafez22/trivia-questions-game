@@ -13,10 +13,10 @@
 - [x] Fetch the Categories API
 - [x] Display the Categories
 - [x] Get the selectedCategories from User
-- [ ] Save selectedCategories into an Array
+- [x] Save selectedCategories into an Array
 - [ ] Link to
     - If RemainCategories:
-        - [ ] Question with (CategoryID, qIndex)
+        - [x] Question with (CategoryID, qIndex)
     - else
         - [ ] Score
          
