@@ -22,7 +22,9 @@ function Categroties() {
   const categories = data?.trivia_categories;
   const categoriesNames = categories?.map((category) => category.name);
   // const categoriesIds = categories.map((category) => category.id);
-
+  const viewCategory = categoriesNames?.filter(
+    (c) => !selectedCategories.includes(c)
+  );
   const handleClick = (e) => {
     setValue(e.target.innerText);
     setId(categories?.[categoriesNames?.indexOf(e.target.innerText)]?.id);
@@ -45,7 +47,7 @@ function Categroties() {
         Now Choose the Question Categroties:{value} - ID:{id}
       </p>
       <ul>
-        {categoriesNames?.map((category, i) => (
+        {viewCategory?.map((category, i) => (
           <li key={i}>
             <button onClick={handleClick}>{category}</button>
           </li>

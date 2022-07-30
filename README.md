@@ -14,6 +14,7 @@
 - [x] Display the Categories
 - [x] Get the selectedCategories from User
 - [x] Save selectedCategories into an Array
+- [x] Show not chosen Categories only
 - [ ] Link to
     - If RemainCategories:
         - [x] Question with (CategoryID, qIndex)
