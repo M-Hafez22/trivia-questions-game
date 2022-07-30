@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserNameContext } from "../contexts/userName";
+import { ChosenDifficultyContext } from "../contexts/difficulty";
 
 function Welcome() {
   // Get userName from User
@@ -9,6 +10,13 @@ function Welcome() {
     event.preventDefault();
     setUserName(value);
   };
+
+  // Get difficulty level from User
+  const [{ chosenDifficulty }, setChosenDifficulty] = useContext(
+    ChosenDifficultyContext
+  );
+  const difficultyList = ["easy", "medium", "hard"];
+
   return (
     <div>
       <h1>Welcome</h1>
@@ -22,6 +30,19 @@ function Welcome() {
           required
         />
       </form>
+
+      {/* <h2>chosenDifficulty: {chosenDifficulty}</h2> */}
+      <ul>
+        {difficultyList.map((d, i) => (
+          <button
+            key={i}
+            onClick={() => setChosenDifficulty(d)}
+            style={{ color: chosenDifficulty === d ? "blue" : "red" }}
+          >
+            {d}
+          </button>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -5,7 +5,7 @@
 ### Welcome Screen 
 
 - [x] Get userName from User
-- [ ] Get difficulty level from User
+- [x] Get difficulty level from User
 - [ ] Link to Catgories
 
 ### Categories
