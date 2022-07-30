@@ -19,8 +19,8 @@ function Categroties() {
   // handle Error
   if (error) return "An error has occurred: " + error.message;
   // Get data
-  const categories = data.trivia_categories;
-  const categoriesNames = categories.map((category) => category.name);
+  const categories = data?.trivia_categories;
+  const categoriesNames = categories?.map((category) => category.name);
   // const categoriesIds = categories.map((category) => category.id);
 
   const handleClick = (e) => {
