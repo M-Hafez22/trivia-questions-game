@@ -6,7 +6,7 @@
 
 - [x] Get userName from User
 - [x] Get difficulty level from User
-- [ ] Link to Catgories
+- [x] Link to Catgories
 
 ### Categories
 

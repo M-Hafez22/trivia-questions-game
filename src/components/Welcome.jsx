@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { UserNameContext } from "../contexts/userName";
 import { ChosenDifficultyContext } from "../contexts/difficulty";
 
@@ -43,6 +44,10 @@ function Welcome() {
           </button>
         ))}
       </ul>
+
+      <button onClick={handleSubmit}>
+        <Link to="/categroties">Play</Link>
+      </button>
     </div>
   );
 }
