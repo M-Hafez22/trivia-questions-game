@@ -21,7 +21,7 @@ function Welcome() {
   const difficultyList = ["easy", "medium", "hard"];
 
   return (
-    <div>
+    <div className="welcome">
       <form
         onSubmit={handleSubmit}
         className={isDark ? "input dark" : "input light"}
