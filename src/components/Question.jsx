@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { ScoreContext } from "../contexts/scoreContext";
@@ -24,6 +24,7 @@ function Question() {
   // Timeout
   const start = Date.now();
   console.log("starting timer...");
+  const location = useLocation();
   useEffect(() => {
     setTimeout(() => {
       const millis = Date.now() - start;
@@ -33,7 +34,7 @@ function Question() {
         ? navigate("/categroties")
         : navigate(`/question/${category}/${index + 1}`);
     }, answerPeriod);
-  });
+  }, [location]);
 
   // Fetch Question from API
   const { isLoading, error, data, status } = useQuery(["data"], () =>
@@ -97,9 +98,6 @@ function Question() {
             ))
           : "Loading..."}
       </ul>
-      <p>
-        {question?.correct_answer} : {userAnswer}
-      </p>
       <div className="btns">
         <button onClick={handleSubmit}>
           {index > 8 ? (
@@ -115,11 +113,6 @@ function Question() {
             <Link to={`/question/${category}/${index + 1}`}>Skiped</Link>
           )}
         </button>
-      </div>
-      <div>
-        <p>length: {data?.results?.length}</p>
-        <p>index: {index}</p>
-        <button onClick={() => navigate("/")}>Home</button>
       </div>
     </div>
   );
