@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {
   HashRouter as Router,
   Routes,
@@ -10,10 +10,14 @@ import Welcome from "./components/Welcome";
 import Categroties from "./components/Categroties";
 import Question from "./components/Question";
 import Score from "./components/Score";
+import { ThemeContext } from "./contexts/theme"
+import ThemeToggle from "./components/ToggleThemes/ThemeToggle"
+
 
 function App() {
+  const [{ isDark }] = useContext(ThemeContext)
   return (
-    <div className="App">
+    <div  className={isDark ? "app dark" : "app light"}>
       <header className="App-header">Trivia Questions game</header>
       <Router>
         <div className="links">
@@ -45,6 +49,7 @@ function App() {
           </Routes>
         </main>
       </Router>
+      <ThemeToggle />
     </div>
   );
 }

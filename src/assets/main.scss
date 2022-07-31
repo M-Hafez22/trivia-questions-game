@@ -1,6 +1,10 @@
 @import "config";
 @import "links";
 @import "header";
+@import "welcome";
+@import "input";
+@import "radioButton";
+@import "toggleThemes";
 
 .App {
   width: 100vw;
@@ -9,6 +13,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  main {
+    width: 80%;
+    height: 70%;
+  }
 }
 
 .dark {
