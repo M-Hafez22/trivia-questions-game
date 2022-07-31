@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserNameContext } from "../contexts/userName";
 import { ChosenDifficultyContext } from "../contexts/difficulty";
+import { ThemeContext } from "../contexts/theme";
 
 function Welcome() {
+  const [{ isDark }] = useContext(ThemeContext);
   // Get userName from User
   const [{ userName }, setUserName] = useContext(UserNameContext);
   const [value, setValue] = useState("");
@@ -21,8 +23,10 @@ function Welcome() {
   return (
     <div>
       <h1>Welcome</h1>
-      {/* <p>userName: {userName}</p> */}
-      <form onSubmit={handleSubmit} className="input">
+      <form
+        onSubmit={handleSubmit}
+        className={isDark ? "input dark" : "input light"}
+      >
         <input
           type="text"
           value={value}
@@ -30,9 +34,13 @@ function Welcome() {
           autoComplete="off"
           required
         />
+        <label
+          // Show unvalid values
+          style={value.length > 0 ? { top: 0 } : { top: "" }}
+        >
+          Player Name
+        </label>
       </form>
-
-      {/* <h2>chosenDifficulty: {chosenDifficulty}</h2> */}
       <ul>
         {difficultyList.map((d, i) => (
           <button
