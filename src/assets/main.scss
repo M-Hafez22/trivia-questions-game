@@ -5,6 +5,7 @@
 @import "input";
 @import "radioButton";
 @import "toggleThemes";
+@import "button";
 
 .app {
   width: 100vw;
@@ -21,11 +22,17 @@
 }
 
 .dark {
-  background-color: $clr-dark;
-  color: $clr-light;
+  color: $clr-dark;
+  background-color:$bg-dark;
+  .active{
+    color: $accent-dark;
+  }
 }
 
 .light {
-  background-color: $clr-light;
-  color: $clr-dark;
+  color: $clr-light;
+  background-color: $bg-light;
+  .active{
+    color: $accent-light;
+  }
 }
