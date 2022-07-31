@@ -7,7 +7,7 @@ function ThemeToggle() {
 
   return (
     <div className="themes">
-      <div className="radio">
+      <div className={isDark ? "dark radio" : "light radio"}>
         <RadioButton
           label="Dark"
           value={"en"}

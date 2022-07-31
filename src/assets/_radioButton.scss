@@ -15,8 +15,14 @@
     padding: 0.25em;
     font-size: 1em;
     border-radius: $border-radius;
-    box-shadow: inset 0 0 0 3px $clr, 0 0 0 3px lighten($clr, 30%);
     position: relative;
+
+    &.light{
+      box-shadow: inset 0 0 0 3px $clr-light, 0 0 0 3px lighten($clr-light, 30%);
+    }
+    &.dark{
+      box-shadow: inset 0 0 0 3px $clr-dark, 0 0 0 3px darken($clr-dark, 30%);
+    }
 
     & input {
       width: auto;
@@ -30,13 +36,22 @@
       font-weight: 600;
       transition: all 100ms linear;
 
-      &:checked {
+      &.light:checked {
         background-image: linear-gradient(
           to right,
-          lighten($clr, 00%) 0%,
-          lighten($clr, 10%) 20%,
-          lighten($clr, 20%) 80%,
-          lighten($clr, 30%) 100%
+          darken($bg-light, 00%) 0%,
+          darken($bg-light, 20%) 20%,
+          darken($bg-light, 30%) 80%,
+          darken($bg-light, 40%) 100%
+        );
+      }
+      &.dark:checked {
+        background-image: linear-gradient(
+          to right,
+          lighten($bg-dark, 00%) 0%,
+          lighten($bg-dark, 10%) 20%,
+          lighten($bg-dark, 20%) 80%,
+          lighten($bg-dark, 30%) 100%
         );
       }
 
