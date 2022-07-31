@@ -26,14 +26,15 @@ function Question() {
   console.log("starting timer...");
   const location = useLocation();
   useEffect(() => {
-    setTimeout(() => {
-      const millis = Date.now() - start;
-      console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
-      handleSkip();
-      index > 8
-        ? navigate("/categroties")
-        : navigate(`/question/${category}/${index + 1}`);
-    }, answerPeriod);
+    location.pathname.includes("/question/") &&
+      setTimeout(() => {
+        const millis = Date.now() - start;
+        console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
+        handleSkip();
+        index > 8
+          ? navigate("/categroties")
+          : navigate(`/question/${category}/${index + 1}`);
+      }, answerPeriod);
   }, [location]);
 
   // Fetch Question from API
