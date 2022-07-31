@@ -46,7 +46,17 @@ function Welcome() {
           <button
             key={i}
             onClick={() => setChosenDifficulty(d)}
-            style={{ color: chosenDifficulty === d ? "blue" : "red" }}
+            className={
+              chosenDifficulty === d
+                ? isDark
+                  ? "level-btn dark active"
+                  : "level-btn light active"
+                : isDark
+                ? "level-btn dark"
+                : "level-btn light"
+            }
+
+            // style={{ color: chosenDifficulty === d ? "blue" : "red" }}
           >
             {d}
           </button>
