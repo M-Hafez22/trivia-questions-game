@@ -1,10 +1,12 @@
-$clr: #444;
-$active-clr: #0ec094;
-$clr-dark: #04161f;
-$clr-light: #e7e7e7;
-$active-clr-dark: #00c192;
-$active-clr-light: #07352a;
-$ctive-clr-text: darken($active-clr, 20);
+// Light
+$clr-light: #233841;
+$bg-light : white;
+$accent-light : #5A8F7B;
+
+// Dark
+$clr-dark : white;
+$bg-dark : #233841;
+$accent-dark : #81CACF;
 
 $border-radius: 20px;
 
