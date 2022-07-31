@@ -98,22 +98,23 @@ function Question() {
             ))
           : "Loading..."}
       </ul>
-      <div className="btns">
-        <button onClick={handleSubmit}>
-          {index > 8 ? (
-            <Link to="/categroties">Back to Category</Link>
-          ) : (
-            <Link to={`/question/${category}/${index + 1}`}>Next</Link>
-          )}
-        </button>
-        <button onClick={handleSkip}>
-          {index > 8 ? (
-            <Link to="/categroties">Back to Category</Link>
-          ) : (
+
+      {index < 8 ? (
+        <div className="btns">
+          <button onClick={handleSubmit}>
+            <Link to={`/question/${category}/${index + 1}`}>Next</Link>{" "}
+          </button>
+          <button onClick={handleSkip}>
             <Link to={`/question/${category}/${index + 1}`}>Skiped</Link>
-          )}
-        </button>
-      </div>
+          </button>
+        </div>
+      ) : (
+        <div className="btns">
+          <button>
+            <Link to="/categroties">Back to Category</Link>
+          </button>
+        </div>
+      )}
     </div>
   );
 }
