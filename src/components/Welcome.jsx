@@ -55,15 +55,16 @@ function Welcome() {
                 ? "level-btn dark"
                 : "level-btn light"
             }
-
-            // style={{ color: chosenDifficulty === d ? "blue" : "red" }}
           >
             {d}
           </button>
         ))}
       </ul>
 
-      <button onClick={handleSubmit}>
+      <button
+        onClick={handleSubmit}
+        className={isDark ? "dark submit" : "light submit"}
+      >
         <Link to="/categroties">Play</Link>
       </button>
     </div>

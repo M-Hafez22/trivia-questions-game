@@ -1,0 +1,46 @@
+.submit {
+  position: relative;
+  overflow: hidden;
+  font-size: 2em;
+  background: inherit;
+  color: inherit;
+  border: 2px solid;
+  padding: 0.5em;
+  border-radius: 15px;
+  background: transparent;
+  cursor: pointer;
+
+  &.dark {
+    border-color: $accent-dark;
+    a::after {
+      background: darken($accent-dark, 50%);
+    }
+  }
+  &.light {
+    border-color: $accent-light;
+    a::after {
+      background: darken($accent-light, 20%);
+    }
+  }
+
+  a {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: #fff;
+      opacity: 0.25;
+      transform: scaleX(0);
+      transform-origin: top;
+      transition: transform 350ms ease;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom;
+    }
+  }
+}
