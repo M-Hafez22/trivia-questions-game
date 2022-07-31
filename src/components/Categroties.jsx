@@ -78,7 +78,7 @@ function Categroties() {
             ))
           : "Loading"}
       </ul>
-      <button onClick={handleSubmit} className="submit">
+      <button onClick={handleSubmit} className={isDark ? "dark submit" : "light submit"}>
         {viewCategory ? (
           <Link to={`/question/${id}/0`}>
             Choose {value === "" ? "Random" : value}
