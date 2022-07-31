@@ -1,4 +1,4 @@
-.level-btn {
+.option-btn {
   font-size: 1.5em;
   border-radius: 5px;
   margin: 0.5em;
@@ -36,7 +36,7 @@
     );
   }
 }
-.level-btn:after {
+.option-btn:after {
   position: absolute;
   content: "";
   width: 100%;
@@ -50,7 +50,7 @@
     7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
 }
 
-.level-btn.dark:after {
+.option-btn.dark:after {
   background-color: $bg-dark;
   background-image: linear-gradient(
     315deg,
@@ -58,7 +58,7 @@
     lighten($bg-dark, 20) 74%
   );
 }
-.level-btn.light:after {
+.option-btn.light:after {
   background-color: #4dccc6;
   background-image: linear-gradient(
     315deg,
@@ -67,12 +67,12 @@
   );
 }
 
-.level-btn:hover:after {
+.option-btn:hover:after {
   top: 0;
   height: 100%;
 }
 
 // on Click
-.level-btn:active {
+.option-btn:active {
   top: 2px;
 }

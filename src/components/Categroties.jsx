@@ -65,11 +65,11 @@ function Categroties() {
                   className={
                     value === category
                       ? isDark
-                        ? "level-btn dark active"
-                        : "level-btn light active"
+                        ? "option-btn dark active"
+                        : "option-btn light active"
                       : isDark
-                      ? "level-btn dark"
-                      : "level-btn light"
+                      ? "option-btn dark"
+                      : "option-btn light"
                   }
                 >
                   {category}
