@@ -5,7 +5,8 @@
 @import "input";
 @import "radioButton";
 @import "toggleThemes";
-@import "button";
+@import "./buttons/levelButton";
+@import "./buttons/submit";
 
 .app {
   width: 100vw;
