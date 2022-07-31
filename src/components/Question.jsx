@@ -90,6 +90,7 @@ function Question() {
         {answers
           ? answers?.map((a, i) => (
               <button
+                className={userAnswer === a && "active"}
                 key={i}
                 onClick={(e) => setUserAnswer(e.target.innerText)}
               >
