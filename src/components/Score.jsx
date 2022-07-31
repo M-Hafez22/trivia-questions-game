@@ -6,7 +6,6 @@ function Score() {
 
   return (
     <div>
-      <h1>Score</h1>
       <p>questions: {score.questions}</p>
       <p>correct: {score.correct}</p>
       <p>failed: {score.failed}</p>

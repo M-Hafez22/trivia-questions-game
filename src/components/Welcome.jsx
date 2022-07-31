@@ -22,7 +22,6 @@ function Welcome() {
 
   return (
     <div>
-      <h1>Welcome</h1>
       <form
         onSubmit={handleSubmit}
         className={isDark ? "input dark" : "input light"}

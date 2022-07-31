@@ -55,7 +55,6 @@ function Categroties() {
   };
   return (
     <div>
-      <h1>Categroties</h1>
       <p>Now Choose the Question Categroties</p>
       <ul>
         {viewCategory
