@@ -3,8 +3,8 @@
 @import "header";
 @import "welcome";
 @import "input";
-@import "radioButton";
-@import "toggleThemes";
+@import "./theme-toggle/radioButton";
+@import "./theme-toggle/toggleThemes";
 @import "./buttons/levelButton";
 @import "./buttons/submit";
 
