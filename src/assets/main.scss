@@ -8,12 +8,21 @@
 @import "./buttons/levelButton";
 @import "./buttons/submit";
 
+
+html, body, #root {
+  height: 100%;
+  margin: 0px;
+  padding: 0;
+}
+
+
 .app {
   width: 100vw;
-  margin-top: 1em;
+  height: 100%;
   display: flex;
+  padding-top: 05.5em;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 
   main {
