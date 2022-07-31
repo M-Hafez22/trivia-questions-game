@@ -2,9 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { SelectedCategoriesContext } from "../contexts/selectedCategories";
+import { ThemeContext } from "../contexts/theme";
 
 function Categroties() {
-  // Chosen category name 
+  const [{ isDark }] = useContext(ThemeContext);
+
+  // Chosen category name
   const [value, setValue] = useState("");
   // Chosen category ID
   const [id, setId] = useState(15);
@@ -58,7 +61,20 @@ function Categroties() {
         {viewCategory
           ? viewCategory?.map((category, i) => (
               <li key={i}>
-                <button onClick={handleClick}>{category}</button>
+                <button
+                  onClick={handleClick}
+                  className={
+                    value === category
+                      ? isDark
+                        ? "level-btn dark active"
+                        : "level-btn light active"
+                      : isDark
+                      ? "level-btn dark"
+                      : "level-btn light"
+                  }
+                >
+                  {category}
+                </button>
               </li>
             ))
           : "Loading"}
