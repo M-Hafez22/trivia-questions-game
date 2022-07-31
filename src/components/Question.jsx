@@ -4,7 +4,11 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { ScoreContext } from "../contexts/scoreContext";
 import { ChosenDifficultyContext } from "../contexts/difficulty";
+import { ThemeContext } from "../contexts/theme";
+
 function Question() {
+  const [{ isDark }] = useContext(ThemeContext);
+
   let { category, index } = useParams();
   index = parseInt(index);
   const [score, setScore] = useContext(ScoreContext);
@@ -91,7 +95,15 @@ function Question() {
         {answers
           ? answers?.map((a, i) => (
               <button
-                className={userAnswer === a && "active"}
+                className={
+                  userAnswer === a
+                    ? isDark
+                      ? "option-btn dark active"
+                      : "option-btn light active"
+                    : isDark
+                    ? "option-btn dark"
+                    : "option-btn light"
+                }
                 key={i}
                 onClick={(e) => setUserAnswer(e.target.innerText)}
               >
@@ -103,16 +115,16 @@ function Question() {
 
       {index < 8 ? (
         <div className="btns">
-          <button onClick={handleSubmit}>
+          <button onClick={handleSubmit} className={isDark ? "dark submit" : "light submit"}>
             <Link to={`/question/${category}/${index + 1}`}>Next</Link>{" "}
           </button>
-          <button onClick={handleSkip}>
+          <button onClick={handleSkip} className={isDark ? "dark submit" : "light submit"}>
             <Link to={`/question/${category}/${index + 1}`}>Skiped</Link>
           </button>
         </div>
       ) : (
         <div className="btns">
-          <button>
+          <button className={isDark ? "dark submit" : "light submit"}>
             <Link to="/categroties">Back to Category</Link>
           </button>
         </div>
